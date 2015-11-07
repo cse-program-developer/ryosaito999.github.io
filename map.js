@@ -8,7 +8,7 @@ require([
 "esri/graphic", "esri/Color", "dojo/domReady!"
 ], function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,Graphic, Color) {
 map = new Map("mapDiv", {
-basemap: "oceans",
+basemap: "topo",
 center: [-85.957, 17.140],
 zoom: 2
 });
