@@ -32,8 +32,10 @@
 
         <style>
           html, body, #mapDiv {
-            padding-top: 1cm;
-            height: 100%;
+          height: 100%;
+          margin: 0px;
+          padding: 0px;
+          width: 100%;
           }
         </style>
 
@@ -50,17 +52,16 @@
       </head>
 
 
-      <body class="claro">
-
-      <h1>Pok&egrave;Quest</h1>
-
+      <body>
+      <h1> pokeQuest </h1>
       <div class="header-cont">
           <div></div>
       </div>
-
-        <div id="mapDiv"></div>
       </body>
 
+      <body onorientationchange="orientationChanged();">
+        <div id="mapDiv" style="width:100%; height:100%;"></div>
+      </body>
 
     </html>
 
