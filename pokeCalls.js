@@ -1,12 +1,12 @@
 
-
-
 function reqListener () {
   var jsonText = this.responseText;
   //console.log(jsonText);
 
   var obj = JSON.parse(jsonText);
-  console.log(obj.name);
+  var pokemon = { name: obj.name, type: obj.types, sprite: "blue"};
+  console.log(pokemon);
+
 }
 
 var xhr = new XMLHttpRequest();
