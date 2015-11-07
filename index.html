@@ -2,21 +2,66 @@
     <html>
       <head>
         <title>Pok&egrave;Quest</title>
+
+        <style type="text/css">
+          body{
+              margin:0px;
+              background:#000;
+          }
+          .header-cont {
+              width:100%;
+              position:fixed;
+              top:0px;
+          }
+          .header {
+              height:50px;
+              background:#F0F0F0;
+              border:1px solid #CCC;
+              width:960px;
+              margin:0px auto;
+          }
+          .content {
+              width:960px;
+              background: #F0F0F0;
+              border: 1px solid #CCC;
+              height: 2000px;
+              margin: 70px auto;
+          }
+          </style>
+
+
+        <style>
+          html, body, #mapDiv {
+            padding-top: 1cm;
+            height: 100%;
+          }
+        </style>
+
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+        <script src="http://js.arcgis.com/3.14/"></script>
+        <script src="map.js"></script>
+
+
       </head>
-      <body>
-        <h1>Hello, world!</h1>
-        <script src="http://code.jquery.com/jquery.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="pokeCalls.js"></script>
-        <script src="http://js.arcgis.com/3.14compact/"> </script>
-        <script src="map.js"> </script>
 
 
+      <body class="claro">
 
+      <h1>This is heading 1</h1>
+
+      <div class="header-cont">
+          <div></div>
+      </div>
+
+        <div id="mapDiv"></div>
       </body>
+
+
     </html>
 
 
