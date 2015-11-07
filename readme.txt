@@ -11,3 +11,6 @@ Ideas to Implement if time permits:
 API's:
 - PokeAPI
 - ArcGis
+
+How to:
+- Customize map markers to pokemon (?)
