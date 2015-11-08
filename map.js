@@ -83,6 +83,11 @@ function addPokemon(lon, lat, pokemon){
   map.graphics.add(g);
 }
 
+function populatePokemon(xMin, xMax, yMin,yMax){
+
+
+}
+
 function initFunc(evt) {
 
   setTimeout(function(){
