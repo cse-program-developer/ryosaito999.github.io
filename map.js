@@ -1,5 +1,9 @@
 var pokemonList = [];
 var pEntry;
+var map;
+var graphic;
+var currLocation;
+var watchId;
 
 function reqListener () {
 
@@ -28,17 +32,10 @@ for ( i = 1; i <= 25; i++){
   xhr.send();
 }
 
-// setTimeout(function(){
-//     //console.log(pokemonList);
-//     //modify pokemon list after this
-// }, 5000);
-
-
-
-var map;
-var graphic;
-var currLocation;
-var watchId;
+setTimeout(function(){
+    console.log(pokemonList);
+    //modify pokemon list after this
+}, 2000);
 
 require([
 "esri/map", "esri/geometry/Point", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", 
@@ -49,12 +46,9 @@ map = new Map("mapDiv", {
 basemap: "topo",
 center: [-117.3280644, 33.9737055],
 zoom: 15
-
-
 });
   
 map.on("load", initFunc);
-
 function orientationChanged() {
   if(map){
     map.reposition();
@@ -65,11 +59,9 @@ function orientationChanged() {
 function addPokemon(lon, lat){
 
     p = new Point(lon, lat );
-    s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
-    // can add a PictureMarkerSymbol here instead of marker Symbol
+    s = new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
     g = new Graphic(p, s);
 
-    // infoTemplate
     var infoTemp = new PopupTemplate({
     "title": "Beverly Hills Trees By Block", 
     "mediaInfos": [{
@@ -85,13 +77,10 @@ function addPokemon(lon, lat){
 
   g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
   map.graphics.add(g);
-
-
 }
 
 function initFunc(evt) {
-      
-    // var gl = new GraphicsLayer();
+    
   addPokemon(-117.325104, 33.978285 );
 
 
