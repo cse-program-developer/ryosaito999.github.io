@@ -5,6 +5,7 @@ var graphic;
 var currLocation;
 var watchId;
 var graphicArr = [];
+var pokemonNames = [];
 
 function reqListener () {
 
@@ -110,6 +111,7 @@ function initFunc(evt) {
 
     map.graphics.add(g);
     graphicArr.push(g);
+    pokemonNames.push('Noname');
 
 
   if( navigator.geolocation ) {  
@@ -201,9 +203,10 @@ function checkDistance()
 
         if (dist < .005)
         {
-            alert("You captured " + graphicArr[i].infoTemplate.title + "!"); // need to change to popupTemplate
+            alert("You captured " + pokemonNames[i] + "!"); // need to change to popupTemplate
             map.graphics.remove(graphicArr[i]);
-            graphicArr.pop();
+            graphicArr.splice(i, 1);
+            pokemonNames.splice(i, 1);
         }
     }
 }
