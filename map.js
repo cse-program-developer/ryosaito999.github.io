@@ -87,6 +87,8 @@ function addPokemon(lon, lat, pokemon){
 
   g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
   map.graphics.add(g);
+  graphicArr.push(g);
+  pokemonNames.push(title);
 }
 
 
@@ -130,8 +132,13 @@ function initFunc(evt) {
     setTimeout(function(){
 
     addPokemon(-117.32623306, 33.97503628, pokemonList[24]);
+    addPokemon(-117.3272531, 33.97802759, pokemonList[16]);
+    addPokemon(-117.3264994, 33.97573482, pokemonList[20]);
+    addPokemon(-117.32611316, 33.97551239, pokemonList[3]);
+    addPokemon(-117.32707286, 33.97487001, pokemonList[29]);
+    addPokemon(-117.32781851, 33.97575529, pokemonList[11]);
+    addPokemon(-117.302239, 33.971314, pokemonList[5]);
 
-      console.log(pokemonList[25].name);
     } , 4000);
 
     // var p = new Point (-117.32623306, 33.97503628);
@@ -236,7 +243,7 @@ function checkDistance()
         dist = calcDistance(currLocation, graphicArr[i].geometry);
         console.log("Distance: " + dist);
 
-        if (dist < .005)
+        if (dist < .0005)
         {
             alert("You captured " + pokemonNames[i] + "!"); 
             map.graphics.remove(graphicArr[i]);
