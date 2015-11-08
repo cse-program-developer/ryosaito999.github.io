@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Ideas to Implement:
 
 PokeRestAPI: Get Name, type, and sprite info.
@@ -27,4 +26,5 @@ API's:
 
 How to:
 - Customize map markers to pokemon (?)
->>>>>>> origin/master
+- Embed a image within InfoTemplate: (https://geonet.esri.com/thread/22879)
+
