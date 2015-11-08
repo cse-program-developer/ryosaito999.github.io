@@ -199,7 +199,7 @@ function checkDistance()
         dist = calcDistance(currLocation, graphicArr[i].geometry);
         console.log("Distance: " + dist);
 
-        if (dist < 2)
+        if (dist < .5)
         {
             map.graphics.remove(graphicArr[i]);
             graphicArr.pop();
