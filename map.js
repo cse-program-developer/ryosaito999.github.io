@@ -12,7 +12,7 @@ function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphi
 map = new Map("mapDiv", {
 basemap: "topo",
 center: [-117.3280644, 33.9737055],
-zoom: 17
+zoom: 15
 
 
 });
@@ -52,7 +52,7 @@ function initFunc(evt) {
     g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
 
     map.graphics.add(g);
-      g.infoWindow.resize(25, 25);
+  
 
 
 
