@@ -1,33 +1,6 @@
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Pok&egrave;Quest</title>
-
-        <style type="text/css">
-          body{
-              margin:0px;
-              background:#000;
-          }
-          .header-cont {
-              width:100%;
-              position:fixed;
-              top:0px;
-          }
-          .header {
-              height:50px;
-              background:#F0F0F0;
-              border:1px solid #CCC;
-              width:960px;
-              margin:0px auto;
-          }
-          .content {
-              width:960px;
-              background: #F0F0F0;
-              border: 1px solid #CCC;
-              height: 2000px;
-              margin: 70px auto;
-          }
-          </style>
 
 
         <style>
@@ -37,6 +10,13 @@
           padding: 0px;
           width: 100%;
           }
+
+          #LocateButton {
+          position: absolute;
+          top: 170px;
+          left: 20px;
+          z-index: 50;
+        }
         </style>
 
 
@@ -47,20 +27,19 @@
         <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
         <script src="http://js.arcgis.com/3.14/"></script>
         <script src="map.js"></script>
-        <script src="pokeCalls.js"></script>
+        <!--script src="pokeCalls.js"></script-->
 
       </head>
 
 
       <body>
       <h1> pokeQuest </h1>
-      <div class="header-cont">
-          <div></div>
-      </div>
       </body>
 
       <body onorientationchange="orientationChanged();">
-        <div id="mapDiv" style="width:100%; height:100%;"></div>
+        <div id="mapDiv" style="width:100%; height:100%;">
+         <div id="LocateButton"></div>   
+        </div>
       </body>
 
 </html>
