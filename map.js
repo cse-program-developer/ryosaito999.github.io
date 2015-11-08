@@ -201,7 +201,7 @@ function checkDistance()
 
         if (dist < .005)
         {
-            alert("You captured " + graphicArr.infoTemplate.title + "!"); // need to change to popupTemplate
+            alert("You captured " + graphicArr[i].infoTemplate.title + "!"); // need to change to popupTemplate
             map.graphics.remove(graphicArr[i]);
             graphicArr.pop();
         }
