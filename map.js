@@ -86,18 +86,55 @@ function addPokemon(lon, lat, pokemon){
 
 function populatePokemon(xMin, xMax, yMin,yMax){
 
+  for( y = yMin; y <= yMax; y+= 0.00005){
+    x = xMin;
+    while(x <= xMax )
+      var randX = Math.random() * ( 0.0001 -  0.00006) + 0.00006;
+      var randY = Math.random() * ( 0.00001 +  0.00001)- 0.00001;
+      //addPokemon(x, y+randY, pokemonList[0]);
+      console.log("x: " + x)
+      console.log("y: " + y)
 
+      x-= randX;
+  }
 }
+
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 
 function initFunc(evt) {
 
   setTimeout(function(){
+  
+  shuffle(pokemonList);
+
   dist = 0.0002;
-  startingPoint = 33.975881;
+  startingPoint = 33.978934;
   console.log(pokemonList.length)
   for( i = 0; i< pokemonList.length ; ++i){
-    addPokemon(-117.339608, startingPoint, pokemonList[i]  );
-    startingPoint -= dist;
+    var randX = Math.random() * ( 0.06 -  0.05) + -117.330532;
+    var randY = Math.random() * ( 0.0006 -  0.0002) + dist;
+
+    addPokemon(randX , startingPoint, pokemonList[i]  );
+    startingPoint -= randY;
   }  }, 4000);
 
 
