@@ -127,11 +127,11 @@ function locationError(error) {
   }
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      alert("Location not provided");
+      alert("You have declined to provide your location.");
       break;
 
     case error.POSITION_UNAVAILABLE:
-      alert("Current location not available");
+      alert("Current location not available. You won't be able to use PokeQuest.");
       break;
 
     case error.TIMEOUT:
@@ -201,6 +201,7 @@ function checkDistance()
 
         if (dist < .005)
         {
+            alert("You captured " + graphicArr.PopupTemplate.title + "!");
             map.graphics.remove(graphicArr[i]);
             graphicArr.pop();
         }
