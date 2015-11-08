@@ -89,20 +89,6 @@ function addPokemon(lon, lat, pokemon){
   map.graphics.add(g);
 }
 
-function populatePokemon(xMin, xMax, yMin,yMax){
-
-  for( y = yMin; y <= yMax; y+= 0.00005){
-    x = xMin;
-    while(x <= xMax )
-      var randX = Math.random() * ( 0.0001 -  0.00006) + 0.00006;
-      var randY = Math.random() * ( 0.00001 +  0.00001)- 0.00001;
-      //addPokemon(x, y+randY, pokemonList[0]);
-      console.log("x: " + x)
-      console.log("y: " + y)
-
-      x-= randX;
-  }
-}
 
 
 function shuffle(array) {
