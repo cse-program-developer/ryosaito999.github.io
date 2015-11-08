@@ -26,22 +26,25 @@ function orientationChanged() {
   }
 }
 
-function initFunc(map) {
+function initFunc(evt) {
       
           // var gl = new GraphicsLayer();
           var p = new Point(-117.3280644, 33.9737055);
           var s = new SimpleMarkerSymbol();
+          // can add a PictureMarkerSymbol here instead of marker Symbol
           var g = new Graphic(p, s);
           map.graphics.add(g);
+          // remove(graphic);, can add attribute such as an id to the graphic,
+          // so we can remove it later
           //map.addLayer(gl);
       
 
-  // if( navigator.geolocation ) {  
-  //   navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
-  //   watchId = navigator.geolocation.watchPosition(showLocation, locationError);
-  // } else {
-  //   alert("Browser doesn't support Geolocation. Visit http://caniuse.com to see browser support for the Geolocation API.");
-  // }
+  if( navigator.geolocation ) {  
+    navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
+    watchId = navigator.geolocation.watchPosition(showLocation, locationError);
+  } else {
+    alert("Browser doesn't support Geolocation. Visit http://caniuse.com to see browser support for the Geolocation API.");
+  }
 }
 
 function locationError(error) {
