@@ -9,6 +9,10 @@
       dojo.require("esri.tasks.locator");
 
 
+// coordinates: somewhere in chung
+
+(-117.32621992, 33.97521567)
+
 var graphicArr = [];
 
 function calcDistance(geo1, geo2)

@@ -4,6 +4,7 @@ var map;
 var graphic;
 var currLocation;
 var watchId;
+var graphicArr = [];
 
 function reqListener () {
 
@@ -38,11 +39,7 @@ require([
 "esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "esri/dijit/PopupTemplate" ,"dojo/domReady!"], 
 
 function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate , PopupTemplate) {
-map = new Map("mapDiv", {
-basemap: "topo",
-center: [-117.3280644, 33.9737055],
-zoom: 15
-});
+map = new Map("mapDiv", { basemap: "topo", center: [-117.3280644, 33.9737055], zoom: 15});
   
 map.on("load", initFunc);
 function orientationChanged() {
@@ -100,6 +97,19 @@ function initFunc(evt) {
   }  }, 4000);
 
 
+    var p = new Point (-117.32621992, 33.97521567);
+    var s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
+    // can add a PictureMarkerSymbol here instead of marker Symbol
+    var g = new Graphic(p, s);
+
+    // infoTemplate
+    var infoTemp = new InfoTemplate();
+    infoTemp.setTitle ("Pokemon Name");
+    infoTemp.setContent("Pokemon info");
+    g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
+
+    map.graphics.add(g);
+    graphicArr.push(g);
 
 
   if( navigator.geolocation ) {  
@@ -143,12 +153,16 @@ function locationError(error) {
     function showLocation(location) {
       //zoom to the users location and add a graphic
       var pt = new Point(location.coords.longitude, location.coords.latitude);
+      currLocation = pt;
       if ( !graphic ) {
         addGraphic(pt);
+        map.centerAt(pt);
       } else { // move the graphic if it already exists
         graphic.setGeometry(pt);
       }
-      map.centerAt(pt);
+
+      checkDistance();
+      //map.centerAt(pt);
     }
     
     function addGraphic(pt){
@@ -165,5 +179,28 @@ function locationError(error) {
       graphic = new Graphic(pt, symbol);
       map.graphics.add(graphic);
     }
+
+function calcDistance(geo1, geo2)
+{
+    x = Math.pow((geo1.x - geo2.x), 2);
+    y = Math.pow((geo1.y - geo2.y), 2);
+
+    return dist = Math.sqrt(x + y);
+}
+
+// periodically check if user's current location 
+// https://developers.arcgis.com/javascript/jssamples/util_distance.html
+function checkDistance()
+{
+    for (i = 0; i < graphicArr.length; i++)
+    {
+        // currLocation = pt;
+        
+        dist = (currLocation, graphicArr[i].geometry);
+
+        if (dist < .00000268)
+            map.graphics.remove(graphicsArr[i]);
+    }
+}
 
 });
