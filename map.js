@@ -50,9 +50,9 @@ function orientationChanged() {
 }
 function addPokemon(lon, lat, pokemon){
 
-    p = new Point(lon, lat );
-    s = new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
-    g = new Graphic(p, s);
+    var p = new Point(lon, lat );
+    var s = new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
+    var g = new Graphic(p, s);
 
     var title = pokemon.name;
     var type = pokemon.type[0];
@@ -182,24 +182,28 @@ function locationError(error) {
 
 function calcDistance(geo1, geo2)
 {
-    x = Math.pow((geo1.x - geo2.x), 2);
-    y = Math.pow((geo1.y - geo2.y), 2);
+    var x = Math.pow((geo1.x - geo2.x), 2);
+    var y = Math.pow((geo1.y - geo2.y), 2);
 
-    return dist = Math.sqrt(x + y);
+    return Math.sqrt(x + y);
 }
 
 // periodically check if user's current location 
 // https://developers.arcgis.com/javascript/jssamples/util_distance.html
 function checkDistance()
 {
-    for (i = 0; i < graphicArr.length; i++)
+    for (var i = 0; i < graphicArr.length; i++)
     {
         // currLocation = pt;
         
         dist = calcDistance(currLocation, graphicArr[i].geometry);
+        console.log("Distance: " + dist);
 
         if (dist < 10)
-            map.graphics.remove(graphicsArr[i]);
+        {
+            map.graphics.remove(graphicArr[i]);
+            graphicArr.pop();
+        }
     }
 }
 
