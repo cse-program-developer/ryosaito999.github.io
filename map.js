@@ -97,7 +97,7 @@ function initFunc(evt) {
   }  }, 4000);
 
 
-    var p = new Point (-117.32608634, 33.97493096);
+    var p = new Point (-117.32613194, 33.97492073);
     var s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
     // can add a PictureMarkerSymbol here instead of marker Symbol
     var g = new Graphic(p, s);
@@ -198,7 +198,7 @@ function checkDistance()
         
         dist = (currLocation, graphicArr[i].geometry);
 
-        if (dist < .0000268)
+        if (dist < .5)
             map.graphics.remove(graphicsArr[i]);
     }
 }
