@@ -26,21 +26,9 @@ function orientationChanged() {
   }
 }
 
-function initFunc(evt) {
-      
-    // var gl = new GraphicsLayer();
-    var p = new Point(-117.3280644, 33.9737055);
-    var s = new SimpleMarkerSymbol();
-    // can add a PictureMarkerSymbol here instead of marker Symbol
-    var g = new Graphic(p, s);
-    map.graphics.add(g);
-    // remove(graphic);, can add attribute such as an id to the graphic,
-    // so we can remove it later
-    //map.addLayer(gl);
+function addPokemon(lon, lat){
 
-    //added pokeball
-
-    p = new Point(-117.325104, 33.978285 );
+    p = new Point(lon, lat );
     s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
     // can add a PictureMarkerSymbol here instead of marker Symbol
     g = new Graphic(p, s);
@@ -52,6 +40,14 @@ function initFunc(evt) {
     g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
 
     map.graphics.add(g);
+
+
+}
+
+function initFunc(evt) {
+      
+    // var gl = new GraphicsLayer();
+  addPokemon(-117.325104, 33.978285 );
 
 
   if( navigator.geolocation ) {  
