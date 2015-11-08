@@ -6,13 +6,13 @@ var watchId;
 require([
 "esri/map", "esri/geometry/Point", 
 "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", 
-"esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "dojo/domReady!"], 
+"esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "dojo/domReady!"], 
 
-function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color) {
+function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate) {
 map = new Map("mapDiv", {
 basemap: "topo",
 center: [-117.3280644, 33.9737055],
-zoom: 17
+zoom: 15
 
 
 });
@@ -44,7 +44,18 @@ function initFunc(evt) {
     s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
     // can add a PictureMarkerSymbol here instead of marker Symbol
     g = new Graphic(p, s);
+
+    // infoTemplate
+    var infoTemp = new InfoTemplate();
+    infoTemp.setTitle ("Pokemon Name");
+    infoTemp.setContent("Pokemon info");
+    g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
+
     map.graphics.add(g);
+  
+
+
+
       
 
   if( navigator.geolocation ) {  
