@@ -27,4 +27,5 @@ API's:
 How to:
 - Customize map markers to pokemon (?)
 - Embed a image within InfoTemplate: (https://geonet.esri.com/thread/22879)
+- Class graphic https://developers.arcgis.com/javascript/jsapi/graphic-amd.html#setattributes
 
