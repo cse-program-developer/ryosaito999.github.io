@@ -115,6 +115,20 @@ function shuffle(array) {
 
 function initFunc(evt) {
 
+
+    setTimeout(function(){
+
+    addPokemon(-117.32623306, 33.97503628, pokemonList[24]);
+    addPokemon(-117.3272531, 33.97802759, pokemonList[16]);
+    addPokemon(-117.3264994, 33.97573482, pokemonList[20]);
+    addPokemon(-117.32611316, 33.97551239, pokemonList[3]);
+    addPokemon(-117.32707286, 33.97487001, pokemonList[29]);
+    addPokemon(-117.32781851, 33.97575529, pokemonList[11]);
+    addPokemon(-117.302239, 33.971314, pokemonList[5]);
+
+    } , 4000);
+
+
   setTimeout(function(){
   
   shuffle(pokemonList);
@@ -128,18 +142,6 @@ function initFunc(evt) {
     addPokemon(randX , startingPoint, pokemonList[i]  );
     startingPoint -= randY;
   }  }, 4000);
-
-    setTimeout(function(){
-
-    addPokemon(-117.32623306, 33.97503628, pokemonList[24]);
-    addPokemon(-117.3272531, 33.97802759, pokemonList[16]);
-    addPokemon(-117.3264994, 33.97573482, pokemonList[20]);
-    addPokemon(-117.32611316, 33.97551239, pokemonList[3]);
-    addPokemon(-117.32707286, 33.97487001, pokemonList[29]);
-    addPokemon(-117.32781851, 33.97575529, pokemonList[11]);
-    addPokemon(-117.302239, 33.971314, pokemonList[5]);
-
-    } , 4000);
 
     // var p = new Point (-117.32623306, 33.97503628);
     // var s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
