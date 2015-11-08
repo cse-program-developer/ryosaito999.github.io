@@ -23,7 +23,7 @@ function reqListener () {
 
 var url = "http://pokeapi.co/api/v1/pokemon/";
 
-for ( i = 1; i <= 25; i++){
+for ( i = 1; i <= 150; i++){
   counter = i;
   var urlFull = url + i.toString() + "/";
   var xhr = new XMLHttpRequest();
@@ -40,7 +40,7 @@ require([
 "esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "esri/dijit/PopupTemplate" ,"dojo/domReady!"], 
 
 function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate , PopupTemplate) {
-map = new Map("mapDiv", { basemap: "topo", center: [-117.3280644, 33.9737055], zoom: 15});
+map = new Map("mapDiv", { basemap: "topo", center: [-117.3280644, 33.9737055], zoom: 16});
   
 map.on("load", initFunc);
 function orientationChanged() {
@@ -60,17 +60,22 @@ function addPokemon(lon, lat, pokemon){
 
     var title = pokemon.name;
     var type = pokemon.type[0];
-    var type2 = pokemon.type[1];
+    var type2 = ""
 
-    if( !type2 )
+    if( !pokemon.type[1] )
       type2 = "";
+
+    else
+      type2 =  " / " + pokemon.type[1];
+
+
 
     var sprite = pokemon.sprite;
 
     var infoTemp = new PopupTemplate({
     "title": title, 
     "mediaInfos": [{
-    "title": type + " / " +type2 ,
+    "title": type + type2 ,
     "caption": "",
     "type": "image",
     "value": {
@@ -130,12 +135,11 @@ function initFunc(evt) {
   startingPoint = 33.978934;
   console.log(pokemonList.length)
   for( i = 0; i< pokemonList.length ; ++i){
-    var randX = Math.random() * ( 0.06 -  0.05) + -117.330532;
-    var randY = Math.random() * ( 0.0006 -  0.0002) + dist;
-
+    var randX = Math.random() * ( 0.008 -  0) + -117.3305;
+    var randY = Math.random() * ( 0.0002 -  0) + dist;
     addPokemon(randX , startingPoint, pokemonList[i]  );
     startingPoint -= randY;
-  }  }, 4000);
+  }  }, 7000);
 
 
     var p = new Point (-117.32623306, 33.97503628);
