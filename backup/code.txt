@@ -1,6 +1,38 @@
+      dojo.require("dijit.dijit");
+      dojo.require("dijit.layout.BorderContainer");
+      dojo.require("dijit.layout.ContentPane");
+      dojo.require("dijit.form.CheckBox");
+      dojo.require("dijit.form.Button");
+      dojo.require("esri.map");
+      dojo.require("esri.tasks.DistanceParameters");
+      dojo.require("esri.tasks.query");
+      dojo.require("esri.tasks.locator");
+
+
 var graphicArr = [];
 
+function calcDistance(geo1, geo2)
+{
+    x = Math.pow((geo1.x - geo2.x), 2);
+    y = Math.pow((geo1.y - geo2.y), 2);
+
+    return dist = Math.sqrt(x + y);
+}
+
 // periodically check if user's current location 
+// https://developers.arcgis.com/javascript/jssamples/util_distance.html
+function checkDistance()
+{
+    for (i = 0; i < graphicArr.length; i++)
+    {
+        // currLocation = pt;
+        
+        dist = (currLocation, graphicArr[i].geometry);
+
+        if (dist < .00000268)
+            map.remove(graphicsArr[i]);
+    }
+}
 
 
 // modification to addPokemon
@@ -19,7 +51,7 @@ function addPokemon(lon, lat){
     g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
 
     map.graphics.add(g);
-
+    graphicArr.push(g);
 
 
 }
