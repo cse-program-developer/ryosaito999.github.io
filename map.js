@@ -37,18 +37,26 @@ for ( i = 1; i <= 25; i++){
 
 require([
 "esri/map", "esri/geometry/Point", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", 
-"esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "esri/dijit/PopupTemplate" ,"dojo/domReady!"], 
+"esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "esri/dijit/PopupTemplate", "esri/dijit/LocateButton", "dojo/domReady!"], 
 
-function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate , PopupTemplate) {
+function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate , PopupTemplate, LocateButton) {
 map = new Map("mapDiv", { basemap: "topo", center: [-117.3280644, 33.9737055], zoom: 15});
   
+geoLocate = new LocateButton({
+        map: map
+      }, "LocateButton");
+      geoLocate.setScale = false;
+      geoLocate.startup();
+  
 map.on("load", initFunc);
+
 function orientationChanged() {
   if(map){
     map.reposition();
     map.resize();
   }
 }
+      
 function addPokemon(lon, lat, pokemon){
 
     var p = new Point(lon, lat );
@@ -191,7 +199,6 @@ function calcDistance(geo1, geo2)
 }
 
 // periodically check if user's current location 
-// https://developers.arcgis.com/javascript/jssamples/util_distance.html
 function checkDistance()
 {
     for (var i = 0; i < graphicArr.length; i++)
@@ -203,7 +210,7 @@ function checkDistance()
 
         if (dist < .005)
         {
-            alert("You captured " + pokemonNames[i] + "!"); // need to change to popupTemplate
+            alert("You captured " + pokemonNames[i] + "!"); 
             map.graphics.remove(graphicArr[i]);
             graphicArr.splice(i, 1);
             pokemonNames.splice(i, 1);
