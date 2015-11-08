@@ -196,9 +196,9 @@ function checkDistance()
     {
         // currLocation = pt;
         
-        dist = (currLocation, graphicArr[i].geometry);
+        dist = calcDistance(currLocation, graphicArr[i].geometry);
 
-        if (dist < .5)
+        if (dist < 10)
             map.graphics.remove(graphicsArr[i]);
     }
 }
