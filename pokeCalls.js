@@ -29,10 +29,10 @@ for ( i = 1; i <= 25; i++){
 	xhr.send();
 }
 
-// setTimeout(function(){
-//     //console.log(pokemonList);
-//     //modify pokemon list after this
-// }, 100);
+setTimeout(function(){
+    //console.log(pokemonList);
+    //modify pokemon list after this
+}, 5000);
 
 
 
