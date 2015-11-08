@@ -8,7 +8,7 @@ function reqListener () {
  	var obj = JSON.parse(jsonText);
  	var imgUrl = "http://pokeapi.co/media/img/" + obj.national_id.toString() + ".png";
     var pokemon = { name: obj.name, type: [] , sprite: imgUrl };
-    console.log(pokemon);
+    //console.log(pokemon);
 
 	for (i = 0; i < obj.types.length; i++) { 
 	     pokemon.type.push(obj.types[i].name);
