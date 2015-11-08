@@ -52,11 +52,7 @@ function initFunc(evt) {
     g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
 
     map.graphics.add(g);
-  
 
-
-
-      
 
   if( navigator.geolocation ) {  
     navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
