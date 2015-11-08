@@ -127,19 +127,19 @@ function shuffle(array) {
 
 function initFunc(evt) {
 
-  setTimeout(function(){
+  // setTimeout(function(){
   
-  shuffle(pokemonList);
+  // shuffle(pokemonList);
 
-  dist = 0.0002;
-  startingPoint = 33.978934;
-  console.log(pokemonList.length)
-  for( i = 0; i< pokemonList.length ; ++i){
-    var randX = Math.random() * ( 0.008 -  0) + -117.3305;
-    var randY = Math.random() * ( 0.0004 -  0) + dist;
-    addPokemon(randX , startingPoint, pokemonList[i]  );
-    startingPoint -= randY;
-  }  }, 4000);
+  // dist = 0.0002;
+  // startingPoint = 33.978934;
+  // console.log(pokemonList.length)
+  // for( i = 0; i< pokemonList.length ; ++i){
+  //   var randX = Math.random() * ( 0.008 -  0) + -117.3305;
+  //   var randY = Math.random() * ( 0.0004 -  0) + dist;
+  //   addPokemon(randX , startingPoint, pokemonList[i]  );
+  //   startingPoint -= randY;
+  // }  }, 4000);
 
 
     var p = new Point (-117.32623306, 33.97503628);
