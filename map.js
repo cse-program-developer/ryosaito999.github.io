@@ -28,15 +28,23 @@ function orientationChanged() {
 
 function initFunc(evt) {
       
-          // var gl = new GraphicsLayer();
-          var p = new Point(-117.3280644, 33.9737055);
-          var s = new SimpleMarkerSymbol();
-          // can add a PictureMarkerSymbol here instead of marker Symbol
-          var g = new Graphic(p, s);
-          map.graphics.add(g);
-          // remove(graphic);, can add attribute such as an id to the graphic,
-          // so we can remove it later
-          //map.addLayer(gl);
+    // var gl = new GraphicsLayer();
+    var p = new Point(-117.3280644, 33.9737055);
+    var s = new SimpleMarkerSymbol();
+    // can add a PictureMarkerSymbol here instead of marker Symbol
+    var g = new Graphic(p, s);
+    map.graphics.add(g);
+    // remove(graphic);, can add attribute such as an id to the graphic,
+    // so we can remove it later
+    //map.addLayer(gl);
+
+    //added pokeball
+
+    p = new Point(-117.325104, 33.978285 );
+    s =  new esri.symbol.PictureMarkerSymbol("http://piq.codeus.net/static/media/userpics/piq_32953_400x400.png" , 51 , 51);
+    // can add a PictureMarkerSymbol here instead of marker Symbol
+    g = new Graphic(p, s);
+    map.graphics.add(g);
       
 
   if( navigator.geolocation ) {  
