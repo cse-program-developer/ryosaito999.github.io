@@ -127,7 +127,7 @@ function locationError(error) {
   }
   switch (error.code) {
     case error.PERMISSION_DENIED:
-      alert("You have declined to provide your location.");
+      alert("You have declined to provide your location. You won't be able to use PokeQuest.");
       break;
 
     case error.POSITION_UNAVAILABLE:
@@ -199,9 +199,9 @@ function checkDistance()
         dist = calcDistance(currLocation, graphicArr[i].geometry);
         console.log("Distance: " + dist);
 
-        if (dist < .5)
+        if (dist < .005)
         {
-            alert("You captured " + graphicArr.PopupTemplate.title + "!");
+            alert("You captured " + graphicArr.infoTemplate.title + "!"); // need to change to popupTemplate
             map.graphics.remove(graphicArr[i]);
             graphicArr.pop();
         }
