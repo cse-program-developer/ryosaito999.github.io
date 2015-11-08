@@ -1,0 +1,7 @@
+p { // Makes all paragraphs in the page red
+    color: blue;
+}
+
+a { // Make all of the links in the page blue
+    color: orange;
+}
