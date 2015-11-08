@@ -1,14 +1,50 @@
+var pokemonList = [];
+var pEntry;
+
+function reqListener () {
+
+    var jsonText = this.responseText;
+  var obj = JSON.parse(jsonText);
+  var imgUrl = "http://pokeapi.co/media/img/" + obj.national_id.toString() + ".png";
+    var pokemon = { name: obj.name, type: [] , sprite: imgUrl };
+    //console.log(pokemon);
+
+  for (i = 0; i < obj.types.length; i++) { 
+       pokemon.type.push(obj.types[i].name);
+  }
+
+  window.pokemonList.push(pokemon);
+}
+
+var url = "http://pokeapi.co/api/v1/pokemon/";
+
+for ( i = 1; i <= 25; i++){
+  counter = i;
+  var urlFull = url + i.toString() + "/";
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", reqListener);
+  xhr.open("GET", urlFull);
+  // Add your code below!
+  xhr.send();
+}
+
+// setTimeout(function(){
+//     //console.log(pokemonList);
+//     //modify pokemon list after this
+// }, 5000);
+
+
+
 var map;
 var graphic;
 var currLocation;
 var watchId;
 
 require([
-"esri/map", "esri/geometry/Point", 
-"esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", 
-"esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "dojo/domReady!"], 
+"esri/map", "esri/geometry/Point", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", 
+"esri/layers/GraphicsLayer", "esri/graphic", "esri/Color", "esri/InfoTemplate", "esri/dijit/PopupTemplate" ,"dojo/domReady!"], 
 
-function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate) {
+function( Map, Point, SimpleMarkerSymbol, SimpleLineSymbol,GraphicsLayer, Graphic, Color, InfoTemplate , PopupTemplate) {
 map = new Map("mapDiv", {
 basemap: "topo",
 center: [-117.3280644, 33.9737055],
@@ -34,12 +70,21 @@ function addPokemon(lon, lat){
     g = new Graphic(p, s);
 
     // infoTemplate
-    var infoTemp = new InfoTemplate();
-    infoTemp.setTitle ("Pokemon Name");
-    infoTemp.setContent("Pokemon info");
-    g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
+    var infoTemp = new PopupTemplate({
+    "title": "Beverly Hills Trees By Block", 
+    "mediaInfos": [{
+    "title": "Grass",
+    "caption": "",
+    "type": "image",
+    "value": {
+      "sourceURL": "http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758",
+      "linkURL": "http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758"
+        }
+      }]
+    });
 
-    map.graphics.add(g);
+  g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
+  map.graphics.add(g);
 
 
 }
