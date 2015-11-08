@@ -41,7 +41,7 @@ function initFunc(evt) {
     //added pokeball
 
     p = new Point(-117.325104, 33.978285 );
-    s =  new esri.symbol.PictureMarkerSymbol("http://piq.codeus.net/static/media/userpics/piq_32953_400x400.png" , 51 , 51);
+    s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
     // can add a PictureMarkerSymbol here instead of marker Symbol
     g = new Graphic(p, s);
     map.graphics.add(g);
@@ -79,36 +79,36 @@ function locationError(error) {
   }
 }
 
-        function zoomToLocation(location) {
-          var pt = new Point(location.coords.longitude, location.coords.latitude);
-          addGraphic(pt);
-          map.centerAndZoom(pt, 12);
-        }
+    function zoomToLocation(location) {
+      var pt = new Point(location.coords.longitude, location.coords.latitude);
+      addGraphic(pt);
+      map.centerAndZoom(pt, 12);
+    }
 
-        function showLocation(location) {
-          //zoom to the users location and add a graphic
-          var pt = new Point(location.coords.longitude, location.coords.latitude);
-          if ( !graphic ) {
-            addGraphic(pt);
-          } else { // move the graphic if it already exists
-            graphic.setGeometry(pt);
-          }
-          map.centerAt(pt);
-        }
-        
-        function addGraphic(pt){
-          var symbol = new SimpleMarkerSymbol(
-            SimpleMarkerSymbol.STYLE_CIRCLE, 
-            12, 
-            new SimpleLineSymbol(
-              SimpleLineSymbol.STYLE_SOLID,
-              new Color([210, 105, 30, 0.5]), 
-              8
-            ), 
-            new Color([210, 105, 30, 0.9])
-          );
-          graphic = new Graphic(pt, symbol);
-          map.graphics.add(graphic);
-        }
+    function showLocation(location) {
+      //zoom to the users location and add a graphic
+      var pt = new Point(location.coords.longitude, location.coords.latitude);
+      if ( !graphic ) {
+        addGraphic(pt);
+      } else { // move the graphic if it already exists
+        graphic.setGeometry(pt);
+      }
+      map.centerAt(pt);
+    }
+    
+    function addGraphic(pt){
+      var symbol = new SimpleMarkerSymbol(
+        SimpleMarkerSymbol.STYLE_CIRCLE, 
+        12, 
+        new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_SOLID,
+          new Color([210, 105, 30, 0.5]), 
+          8
+        ), 
+        new Color([210, 105, 30, 0.9])
+      );
+      graphic = new Graphic(pt, symbol);
+      map.graphics.add(graphic);
+    }
 
 });
