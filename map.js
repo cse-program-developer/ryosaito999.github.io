@@ -23,7 +23,7 @@ function reqListener () {
 
 var url = "http://pokeapi.co/api/v1/pokemon/";
 
-for ( i = 1; i <= 26; i++){
+for ( i = 1; i <= 30; i++){
   counter = i;
   var urlFull = url + i.toString() + "/";
   var xhr = new XMLHttpRequest();
@@ -127,21 +127,27 @@ function initFunc(evt) {
   //   startingPoint -= randY;
   // }  }, 4000);
 
+    setTimeout(function(){
 
-    var p = new Point (-117.32623306, 33.97503628);
-    var s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
-    // can add a PictureMarkerSymbol here instead of marker Symbol
-    var g = new Graphic(p, s);
+    addPokemon(-117.32623306, 33.97503628, pokemonList[24]);
 
-    // infoTemplate
-    var infoTemp = new InfoTemplate();
-    infoTemp.setTitle ("Pokemon Name");
-    infoTemp.setContent("Pokemon info");
-    g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
+      console.log(pokemonList[25].name);
+    } , 4000);
 
-    map.graphics.add(g);
-    graphicArr.push(g);
-    pokemonNames.push('Noname');
+    // var p = new Point (-117.32623306, 33.97503628);
+    // var s =  new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
+    // // can add a PictureMarkerSymbol here instead of marker Symbol
+    // var g = new Graphic(p, s);
+
+    // // infoTemplate
+    // var infoTemp = new InfoTemplate();
+    // infoTemp.setTitle ("Pokemon Name");
+    // infoTemp.setContent("Pokemon info");
+    // g.setInfoTemplate(infoTemp.setTitle("Pokemon Name"));
+
+    // map.graphics.add(g);
+    // graphicArr.push(g);
+    // pokemonNames.push('Noname');
 
 
   if( navigator.geolocation ) {  
