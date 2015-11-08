@@ -7,11 +7,10 @@ var watchId;
 
 function reqListener () {
 
-    var jsonText = this.responseText;
+  var jsonText = this.responseText;
   var obj = JSON.parse(jsonText);
   var imgUrl = "http://pokeapi.co/media/img/" + obj.national_id.toString() + ".png";
-    var pokemon = { name: obj.name, type: [] , sprite: imgUrl };
-    //console.log(pokemon);
+  var pokemon = { name: obj.name, type: [] , sprite: imgUrl };
 
   for (i = 0; i < obj.types.length; i++) { 
        pokemon.type.push(obj.types[i].name);
@@ -32,10 +31,7 @@ for ( i = 1; i <= 25; i++){
   xhr.send();
 }
 
-setTimeout(function(){
-    console.log(pokemonList);
-    //modify pokemon list after this
-}, 2000);
+
 
 require([
 "esri/map", "esri/geometry/Point", "esri/symbols/SimpleMarkerSymbol", "esri/symbols/SimpleLineSymbol", 
@@ -55,22 +51,30 @@ function orientationChanged() {
     map.resize();
   }
 }
-
-function addPokemon(lon, lat){
+function addPokemon(lon, lat, pokemon){
 
     p = new Point(lon, lat );
     s = new esri.symbol.PictureMarkerSymbol("images/pokeBall.png" , 51 , 51);
     g = new Graphic(p, s);
 
+    var title = pokemon.name;
+    var type = pokemon.type[0];
+    var type2 = pokemon.type[1];
+
+    if( !type2 )
+      type2 = "";
+
+    var sprite = pokemon.sprite;
+
     var infoTemp = new PopupTemplate({
-    "title": "Beverly Hills Trees By Block", 
+    "title": title, 
     "mediaInfos": [{
-    "title": "Grass",
+    "title": type + " / " +type2 ,
     "caption": "",
     "type": "image",
     "value": {
-      "sourceURL": "http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758",
-      "linkURL": "http://vignette1.wikia.nocookie.net/pokemon/images/b/b8/001Bulbasaur_Dream.png/revision/latest?cb=20140903033758"
+      "sourceURL": sprite,
+      "linkURL": sprite
         }
       }]
     });
@@ -80,8 +84,17 @@ function addPokemon(lon, lat){
 }
 
 function initFunc(evt) {
-    
-  addPokemon(-117.325104, 33.978285 );
+
+  setTimeout(function(){
+  dist = 0.0002;
+  startingPoint = 33.975881;
+  console.log(pokemonList.length)
+  for( i = 0; i< pokemonList.length ; ++i){
+    addPokemon(-117.339608, startingPoint, pokemonList[i]  );
+    startingPoint -= dist;
+  }  }, 4000);
+
+
 
 
   if( navigator.geolocation ) {  
